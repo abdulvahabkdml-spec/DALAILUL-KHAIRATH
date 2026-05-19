@@ -1,0 +1,157 @@
+.contactContainer {
+    min-height: 100vh;
+    padding-top: calc(var(--spacing-xl) + 100px);
+    padding-bottom: var(--spacing-xl);
+    background-color: var(--pure-white);
+    padding-inline: 1.5rem;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--deep-scholarly-blue);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.layoutGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.infoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: var(--spacing-md);
+    background-color: var(--slate-grey);
+    border-radius: 12px;
+    border-left: 4px solid var(--scholarly-blue-light);
+}
+
+.iconWrapper {
+    background-color: #005D91;
+    color: var(--pure-white);
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoContent h3 {
+    color: var(--deep-scholarly-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.infoContent p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.mapSection {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    background-color: var(--silver-grey);
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+}
+
+.mapPlaceholder {
+    width: 100%;
+    height: 100%;
+    /* Using an iframe to google maps, styles will be applied inline to iframe */
+}
+
+/* Form Styles */
+.contactForm {
+    background: var(--pure-white);
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid var(--silver-grey);
+}
+
+.formGroup {
+    margin-bottom: var(--spacing-md);
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--silver-grey);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--slate-grey);
+    transition: all var(--transition-fast);
+}
+
+.input:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--deep-scholarly-blue);
+    background-color: var(--pure-white);
+    box-shadow: 0 0 0 3px rgba(29, 74, 127, 0.1);
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submitBtn {
+    background-color: #005D91;
+    color: var(--pure-white);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submitBtn:hover {
+    background-color: #004B7A;
+}
+
+@media (max-width: 900px) {
+    .layoutGrid {
+        grid-template-columns: 1fr;
+    }
+}

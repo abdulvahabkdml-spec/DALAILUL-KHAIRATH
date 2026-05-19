@@ -1,0 +1,106 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  z-index: var(--z-nav);
+  transition: background-color var(--transition-slow), color var(--transition-slow), padding var(--transition-medium);
+  padding: 1.5rem 0;
+}
+
+.transparent {
+  background-color: transparent;
+  color: var(--pure-white);
+}
+
+.solid {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  color: var(--deep-scholarly-blue);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* very subtle shadow */
+  padding: 1rem 0;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoImg {
+  object-fit: contain;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: 3rem;
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: opacity var(--transition-fast);
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+/* No boxes around navigation links as per PRD */
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width var(--transition-medium);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.giveBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--deep-scholarly-blue);
+  color: var(--pure-white);
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.giveBtn:hover {
+  background-color: var(--scholarly-blue-light);
+  transform: translateY(-2px);
+}
+
+.giftIcon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
