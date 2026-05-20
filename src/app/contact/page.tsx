@@ -33,6 +33,32 @@ export default function ContactPage() {
         fetchSettings();
     }, []);
 
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // A small timeout ensures DOM elements are rendered before observing
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-card, .stagger-delay').forEach(el => {
+                observer.observe(el);
+            });
+        }, 100);
+
+        return () => observer.disconnect();
+    }, []);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -82,6 +108,18 @@ export default function ContactPage() {
             </header>
 
             <div className="max-w-7xl mx-auto px-6 w-full py-16 lg:py-24">
+                
+                {/* Premium Contact Section Heading */}
+                <div className="text-center mb-16 reveal-card">
+                    <p className="text-[#B1976B] font-label tracking-[0.2em] uppercase text-xs font-bold mb-3">
+                        Get in touch with DK
+                    </p>
+                    <h2 className="text-[32px] lg:text-[42px] text-[#003459] font-serif-premium mb-4">
+                        Contact Us
+                    </h2>
+                    <div className="w-16 h-[1.5px] bg-[#B1976B]/40 mx-auto"></div>
+                </div>
+
                 <div className={styles.layoutGrid}>
                 {/* Left Side: Info & Form */}
                 <div className={styles.infoSection}>
