@@ -234,7 +234,7 @@ export default function HomePageClient({
                 </div>
 
                 <div className="relative z-30 text-center px-6 mt-16 flex flex-col items-center pointer-events-none">
-                    <h1 className="text-[2.5rem] leading-[1.1] md:text-5xl lg:text-6xl font-serif-premium text-white font-extrabold tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] reveal-card stagger-delay mx-auto max-w-5xl" style={{ animationDelay: '0.2s', textWrap: 'balance' }}>
+                    <h1 className="text-[2.2rem] xs:text-[2.5rem] leading-[1.1] md:text-5xl lg:text-6xl font-serif-premium text-white font-extrabold tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] reveal-card stagger-delay mx-auto max-w-5xl" style={{ animationDelay: '0.2s', textWrap: 'balance' }}>
                         {siteSettings?.heroTitle || 'Empowering Minds, Inspiring Futures'}
                     </h1>
 
@@ -284,10 +284,10 @@ export default function HomePageClient({
                         </p>
                         
                         <div>
-                            <button className="px-10 py-5 bg-[#005D91] text-white hover:bg-[#003459] hover:shadow-premium-hover hover:-translate-y-1 transition-all duration-300 font-bold tracking-widest uppercase text-sm rounded-xl shadow-premium group flex items-center gap-3">
+                            <a href="/about" className="inline-flex px-10 py-5 bg-[#005D91] text-white hover:bg-[#003459] hover:shadow-premium-hover hover:-translate-y-1 transition-all duration-300 font-bold tracking-widest uppercase text-sm rounded-xl shadow-premium group items-center gap-3 cursor-pointer">
                                 Explore Our Campus
                                 <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                     
@@ -428,19 +428,19 @@ export default function HomePageClient({
                     
                     {/* Top 3 Metric Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-24">
-                        <div className="metric-card bg-white p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
+                        <div className="metric-card bg-white p-6 sm:p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
                             <div className="accent-line w-1 bg-[#005D91] opacity-0 transition-all duration-500 rounded-l-3xl"></div>
-                            <div className="text-5xl font-bold font-body text-[#005D91] mb-3">20+</div>
+                            <div className="text-4xl sm:text-5xl font-bold font-body text-[#005D91] mb-3">20+</div>
                             <div className="font-serif-premium text-[#B1976B] font-bold text-sm tracking-widest uppercase">Years of Excellence</div>
                         </div>
-                        <div className="metric-card bg-white p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card stagger-delay hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
+                        <div className="metric-card bg-white p-6 sm:p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card stagger-delay hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
                             <div className="accent-line w-1 bg-[#005D91] opacity-0 transition-all duration-500 rounded-l-3xl"></div>
-                            <div className="text-5xl font-bold font-body text-[#005D91] mb-3">404+</div>
+                            <div className="text-4xl sm:text-5xl font-bold font-body text-[#005D91] mb-3">404+</div>
                             <div className="font-serif-premium text-[#B1976B] font-bold text-sm tracking-widest uppercase">Enrolled Students</div>
                         </div>
-                        <div className="metric-card bg-white p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card delay-200 hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
+                        <div className="metric-card bg-white p-6 sm:p-10 lg:p-12 rounded-3xl shadow-premium hover:shadow-premium-hover reveal-card delay-200 hover-lift transition-all duration-500 border border-slate-100 hover:border-[#005D91]/30">
                             <div className="accent-line w-1 bg-[#005D91] opacity-0 transition-all duration-500 rounded-l-3xl"></div>
-                            <div className="text-5xl font-bold font-body text-[#005D91] mb-3">200+</div>
+                            <div className="text-4xl sm:text-5xl font-bold font-body text-[#005D91] mb-3">200+</div>
                             <div className="font-serif-premium text-[#B1976B] font-bold text-sm tracking-widest uppercase">Global Islamic Leaders</div>
                         </div>
                     </div>
@@ -543,7 +543,7 @@ export default function HomePageClient({
                         flex-direction: column;
                         align-items: center;
                         gap: 0;
-                        padding: 40px 56px;
+                        padding: 24px;
                         background: rgba(255,255,255,0.85);
                         backdrop-filter: blur(12px);
                         -webkit-backdrop-filter: blur(12px);
@@ -551,6 +551,11 @@ export default function HomePageClient({
                         border: 1px solid rgba(201,169,90,0.18);
                         box-shadow: 0 2px 40px rgba(0,0,0,0.05), 0 0 0 1px rgba(255,255,255,0.9) inset;
                         transition: transform 0.5s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.5s ease, border-color 0.3s ease;
+                    }
+                    @media (min-width: 640px) {
+                        .affil-card {
+                            padding: 40px 56px;
+                        }
                     }
                     .affil-card:hover {
                         transform: translateY(-6px);

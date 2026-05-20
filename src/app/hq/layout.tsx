@@ -32,6 +32,12 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
     }
   }, [status, pathname, router]);
 
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
+  }, []);
+
   if (status === 'loading') {
     return (
       <div className="dk-admin-loading">
@@ -51,6 +57,14 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   // If authenticated, show the full admin dashboard
   return (
     <div className="dk-admin-root">
+      {/* Mobile Backdrop */}
+      {sidebarOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/60 z-[1500] backdrop-blur-sm"
+          onClick={() => setSidebarOpen(false)}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 1500, backdropFilter: 'blur(4px)' }}
+        ></div>
+      )}
       <Sidebar isOpen={sidebarOpen} />
       
       <main className={`dk-main${sidebarOpen ? '' : ' sidebar-collapsed'}`}>

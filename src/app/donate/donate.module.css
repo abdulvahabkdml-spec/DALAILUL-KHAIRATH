@@ -254,9 +254,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     color: rgba(255,255,255,0.92);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .donateToValueMono {
@@ -550,9 +548,7 @@
     color: var(--navy);
     font-family: 'Courier New', monospace;
     letter-spacing: 0.06em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 /* IFSC highlighted row */
@@ -671,4 +667,24 @@
     font-style: italic;
     line-height: 1.5;
     opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+    .givingContent {
+        padding: 2rem 1.25rem;
+    }
+    .bankCard {
+        padding: 1.25rem 1rem;
+    }
+    .givingHeadline {
+        font-size: 1.75rem;
+    }
+    .bankActions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .upiBtn, .qrBtn {
+        width: 100%;
+        justify-content: center;
+    }
 }

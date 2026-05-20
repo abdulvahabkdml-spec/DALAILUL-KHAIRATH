@@ -20,7 +20,15 @@ const ALLOWED_ORIGINS = [
   'http://127.0.0.1:3000',
   'https://dalailulkhairath.com',
   'https://www.dalailulkhairath.com',
+  'https://dalailulkhairath.vercel.app',
 ].filter((o): o is string => !!o);
+
+function isOriginAllowed(origin: string, nextUrlOrigin: string): boolean {
+  if (!origin) return false;
+  if (origin === nextUrlOrigin) return true;
+  if (origin.endsWith('.vercel.app')) return true;
+  return ALLOWED_ORIGINS.includes(origin);
+}
 
 // ─── Admin IP Whitelist ──────────────────────────────────────────────────────
 // Comma-separated list of allowed IPs for /hq (admin panel) routes.
@@ -132,7 +140,7 @@ export async function proxy(request: NextRequest) {
 
   // ── Preflight (OPTIONS) ──
   if (request.method === 'OPTIONS') {
-    const isAllowed = ALLOWED_ORIGINS.includes(origin);
+    const isAllowed = isOriginAllowed(origin, request.nextUrl.origin);
     return new NextResponse(null, {
       status: isAllowed ? 204 : 403,
       headers: {
@@ -146,7 +154,7 @@ export async function proxy(request: NextRequest) {
 
   // ── CORS for actual requests ──
   const isApiRoute = pathname.startsWith('/api/');
-  if (isApiRoute && origin && !ALLOWED_ORIGINS.includes(origin)) {
+  if (isApiRoute && origin && !isOriginAllowed(origin, request.nextUrl.origin)) {
     console.warn(`[Proxy] Blocked Origin: ${origin} (Not in ALLOWED_ORIGINS)`);
     return new NextResponse(
       JSON.stringify({ 
@@ -197,7 +205,7 @@ export async function proxy(request: NextRequest) {
       });
 
       // Apply CORS header
-      if (origin && ALLOWED_ORIGINS.includes(origin)) {
+      if (origin && isOriginAllowed(origin, request.nextUrl.origin)) {
         response.headers.set('Access-Control-Allow-Origin', origin);
         response.headers.set('Vary', 'Origin');
       }

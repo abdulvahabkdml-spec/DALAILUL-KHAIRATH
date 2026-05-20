@@ -669,3 +669,60 @@
   color: var(--text-secondary);
   line-height: 1.5;
 }
+
+@media (max-width: 768px) {
+  .dk-sidebar {
+    transform: translateX(-100%);
+    width: var(--sidebar-w) !important;
+    z-index: 2000;
+  }
+  .dk-sidebar:not(.collapsed) {
+    transform: translateX(0);
+    box-shadow: 10px 0 50px rgba(0,0,0,0.8);
+  }
+  .dk-main, .dk-main.sidebar-collapsed {
+    margin-left: 0 !important;
+  }
+  
+  /* Topbar Fixes */
+  .dk-topbar {
+    padding: 0 16px;
+  }
+  .dk-search {
+    display: none;
+  }
+  .dk-user-control span {
+    display: none !important; /* Hide ADMIN name to save space */
+  }
+  .dk-time {
+    display: none; /* Hide clock */
+  }
+  .dk-breadcrumb {
+    display: none; /* Hide breadcrumb on small screens */
+  }
+
+  /* Content & Table Fixes */
+  .dk-content {
+    padding: 16px;
+  }
+  .dk-page-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .dk-card-body {
+    overflow-x: auto; /* Allow scrolling inside card */
+  }
+  .dk-log-table {
+    min-width: 600px; /* Force tables to maintain premium layout and scroll instead of squish */
+  }
+
+  /* Modal & Form Fixes */
+  .dk-modal-header, .dk-modal-body, .dk-modal-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dk-input-group {
+    margin-bottom: 16px;
+  }
+}

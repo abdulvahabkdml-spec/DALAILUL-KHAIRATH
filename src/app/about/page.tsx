@@ -72,7 +72,7 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
                         {/* Vision Card */}
-                        <div className="bg-white p-10 lg:p-16 rounded-3xl shadow-soft border border-[#005D91]/5 reveal-card hover:-translate-y-2 transition-transform duration-500">
+                        <div className="bg-white p-8 md:p-10 lg:p-16 rounded-3xl shadow-soft border border-[#005D91]/5 reveal-card hover:-translate-y-2 transition-transform duration-500">
                             <div className="w-16 h-16 bg-[#005D91]/5 rounded-2xl flex items-center justify-center mb-8">
                                 <span className="material-symbols-outlined text-3xl text-[#005D91]">visibility</span>
                             </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
                             </p>
                         </div>
                         {/* Mission Card */}
-                        <div className="bg-[#005D91] p-10 lg:p-16 rounded-3xl shadow-premium text-white reveal-card stagger-delay hover:-translate-y-2 transition-transform duration-500">
+                        <div className="bg-[#005D91] p-8 md:p-10 lg:p-16 rounded-3xl shadow-premium text-white reveal-card stagger-delay hover:-translate-y-2 transition-transform duration-500">
                             <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm">
                                 <span className="material-symbols-outlined text-3xl text-white">rocket_launch</span>
                             </div>

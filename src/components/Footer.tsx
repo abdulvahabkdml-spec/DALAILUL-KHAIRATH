@@ -21,45 +21,47 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* Column 2: Quick Links */}
-                    <div className="w-full md:w-[15%] flex flex-col">
-                        {/* Section Title: #E2AA43, 15px, 700, Title Case, mb-20px */}
-                        <h4 style={{ color: '#E2AA43', fontSize: '15px', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.01em' }}>Quick Links</h4>
-                        <ul className="flex flex-col" style={{ gap: '12px' }}>
-                            {[
-                                { name: 'Home', href: '/' },
-                                { name: 'Our Story', href: '/about' },
-                                { name: 'Vision & Mission', href: '/about' },
-                                { name: 'Contact Us', href: '/contact' }
-                            ].map(link => (
-                                <li key={link.name}>
-                                    {/* Link items: #E0E0E0, 14px, 400 */}
-                                    <Link href={link.href} style={{ color: '#E0E0E0', fontSize: '14px', fontWeight: 400 }} className="whitespace-nowrap hover:text-[#E2AA43] transition-colors block">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    <div className="w-full md:w-[30%] grid grid-cols-2 md:flex md:justify-between gap-8 md:gap-0">
+                        {/* Column 2: Quick Links */}
+                        <div className="flex flex-col md:w-[45%]">
+                            {/* Section Title: #E2AA43, 15px, 700, Title Case, mb-20px */}
+                            <h4 style={{ color: '#E2AA43', fontSize: '15px', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.01em' }}>Quick Links</h4>
+                            <ul className="flex flex-col" style={{ gap: '12px' }}>
+                                {[
+                                    { name: 'Home', href: '/' },
+                                    { name: 'Our Story', href: '/about' },
+                                    { name: 'Vision & Mission', href: '/about' },
+                                    { name: 'Contact Us', href: '/contact' }
+                                ].map(link => (
+                                    <li key={link.name}>
+                                        {/* Link items: #E0E0E0, 14px, 400 */}
+                                        <Link href={link.href} style={{ color: '#E0E0E0', fontSize: '14px', fontWeight: 400 }} className="whitespace-nowrap hover:text-[#E2AA43] transition-colors block">
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    {/* Column 3: Links */}
-                    <div className="w-full md:w-[15%] flex flex-col">
-                        <h4 style={{ color: '#E2AA43', fontSize: '15px', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.01em' }}>Links</h4>
-                        <ul className="flex flex-col" style={{ gap: '12px' }}>
-                            {[
-                                { name: 'About', href: '/about' },
-                                { name: 'Events', href: '/updates' },
-                                { name: 'News', href: '/updates' },
-                                { name: 'Care Donation', href: '/donate' },
-                                { name: 'Location', href: '/contact' }
-                            ].map(link => (
-                                <li key={link.name}>
-                                    <Link href={link.href} style={{ color: '#E0E0E0', fontSize: '14px', fontWeight: 400 }} className="whitespace-nowrap hover:text-[#E2AA43] transition-colors block">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
+                        {/* Column 3: Links */}
+                        <div className="flex flex-col md:w-[45%]">
+                            <h4 style={{ color: '#E2AA43', fontSize: '15px', fontWeight: 700, marginBottom: '20px', letterSpacing: '0.01em' }}>Links</h4>
+                            <ul className="flex flex-col" style={{ gap: '12px' }}>
+                                {[
+                                    { name: 'About', href: '/about' },
+                                    { name: 'Events', href: '/updates' },
+                                    { name: 'News', href: '/updates' },
+                                    { name: 'Care Donation', href: '/donate' },
+                                    { name: 'Location', href: '/contact' }
+                                ].map(link => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} style={{ color: '#E0E0E0', fontSize: '14px', fontWeight: 400 }} className="whitespace-nowrap hover:text-[#E2AA43] transition-colors block">
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                     {/* Column 4: Contact & Socials */}

@@ -34,6 +34,8 @@ export default function Navbar() {
         };
     }, [router]);
 
+
+
     const navLinks = [
         { name: 'Home', href: '/', active: isHomePage },
         { 
@@ -41,8 +43,8 @@ export default function Navbar() {
             href: '/about', 
             hasDropdown: true, 
             subLinks: [
-                { name: 'Our Story', href: '/about#our-story' },
-                { name: 'Vision & Mission', href: '/about#vision-mission' }
+                { name: 'Our Story', href: '/about#our-story', icon: 'history_edu' },
+                { name: 'Vision & Mission', href: '/about#vision-mission', icon: 'visibility' }
             ] 
         },
         { 
@@ -50,27 +52,36 @@ export default function Navbar() {
             href: '/updates', 
             hasDropdown: true, 
             subLinks: [
-                { name: 'News', href: '/updates#news' },
-                { name: 'Events', href: '/updates#events' }
+                { name: 'News', href: '/updates#news', icon: 'newspaper' },
+                { name: 'Events', href: '/updates#events', icon: 'event' }
             ] 
         },
         { name: 'Contact', href: '/contact' },
     ];
 
     return (
-        <nav 
-            className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
+        <>
+            {/* Invisible backdrop for closing mobile menu by clicking outside safely */}
+            {isMobileMenuOpen && (
+                <div 
+                    className="xl:hidden fixed inset-0 z-40 bg-transparent" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                ></div>
+            )}
+            <nav 
+                id="main-nav"
+                className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
+                    ${isScrolled 
+                        ? 'top-4 w-[90%] lg:w-[85%] max-w-5xl' 
+                        : 'top-6 w-[95%] lg:w-[92%] max-w-7xl'
+                    }`}
+            >
+            <div className={`transition-all duration-500 rounded-[40px] px-4 md:pl-6 md:pr-8 lg:pl-12 lg:pr-16 flex items-center justify-between relative group/nav
                 ${isScrolled 
-                    ? 'top-4 w-[90%] lg:w-[85%] max-w-5xl' 
-                    : 'top-6 w-[95%] lg:w-[92%] max-w-7xl'
-                }`}
-        >
-            <div className={`transition-all duration-500 rounded-[40px] pl-6 pr-8 lg:pl-12 lg:pr-16 flex items-center justify-between relative group/nav
-                ${isScrolled 
-                    ? 'h-22 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
+                    ? 'h-16 md:h-20 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
                     : (isHomePage 
-                        ? 'h-32 bg-[#0F172A]/10 backdrop-blur-md border border-white/10'
-                        : 'h-24 lg:h-28 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]')
+                        ? 'h-20 md:h-32 bg-[#0F172A]/10 backdrop-blur-md border border-white/10'
+                        : 'h-20 md:h-24 lg:h-28 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]')
                 }`}>
                 {/* Subtle internal glow - rounded to match parent */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover/nav:opacity-100 transition-opacity duration-1000 rounded-[40px] pointer-events-none"></div>
@@ -83,8 +94,8 @@ export default function Navbar() {
                             alt="Dalailul Khairath Logo" 
                             className={`w-auto object-contain brightness-0 invert transition-all duration-500 hover:opacity-100 drop-shadow-xl
                                 ${isScrolled 
-                                    ? 'h-14 lg:h-16 opacity-90' 
-                                    : 'h-20 lg:h-24 opacity-100'
+                                    ? 'h-10 md:h-14 lg:h-16 opacity-90' 
+                                    : 'h-12 md:h-20 lg:h-24 opacity-100'
                                 }`} 
                         />
                     </Link>
@@ -118,9 +129,10 @@ export default function Navbar() {
                                                 href={sub.href} 
                                                 className="block px-4 py-3 text-[12px] font-bold text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-all hover:pl-5 group/sub"
                                             >
-                                                <span className="flex items-center justify-between">
-                                                    {sub.name}
-                                                    <span className="material-symbols-outlined text-[14px] opacity-0 group-hover/sub:opacity-100 -translate-x-2 group-hover/sub:translate-x-0 transition-all">chevron_right</span>
+                                                <span className="flex items-center gap-2.5">
+                                                    <span className="material-symbols-outlined text-[16px] opacity-70 group-hover/sub:opacity-100 group-hover/sub:text-[#C9A95A] transition-colors">{sub.icon}</span>
+                                                    <span className="flex-1">{sub.name}</span>
+                                                    <span className="material-symbols-outlined text-[14px] opacity-0 group-hover/sub:opacity-100 -translate-x-2 group-hover/sub:translate-x-0 transition-all text-[#C9A95A]">chevron_right</span>
                                                 </span>
                                             </Link>
                                         ))}
@@ -148,18 +160,17 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`xl:hidden absolute left-0 right-0 transition-all duration-500 
-                ${isScrolled ? 'top-28' : 'top-44'} 
+            <div className={`xl:hidden absolute left-0 right-0 transition-all duration-500 top-full mt-2
                 ${isMobileMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'}`}>
                 <div className="bg-[#0F172A]/80 backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-2xl mx-2">
-                    <div className="grid grid-cols-1 gap-2 text-center">
+                    <div className="grid grid-cols-1 gap-2">
                         {navLinks.map((link) => (
                             <div key={link.name} className="flex flex-col">
-                                <div className="flex items-center justify-center">
+                                <div className="flex items-center justify-between">
                                     <Link 
                                         href={link.href}
-                                        className="flex-grow px-6 py-4 text-sm font-bold text-white/80 hover:text-white hover:bg-white/5 rounded-2xl transition-all"
-                                        onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                                        className="py-4 px-4 text-sm font-bold text-white/80 hover:text-white hover:bg-white/5 rounded-2xl transition-all flex-1 text-left"
+                                        onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {link.name}
                                     </Link>
@@ -176,15 +187,19 @@ export default function Navbar() {
                                 </div>
                                 
                                 {link.hasDropdown && activeDropdown === link.name && (
-                                    <div className="bg-white/5 rounded-2xl mb-2 py-2 mx-4 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
+                                    <div className="bg-white/[0.03] border border-white/5 rounded-2xl mb-4 mt-1 py-3 mx-4 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-1 shadow-inner">
                                         {link.subLinks?.map((sub) => (
                                             <Link 
                                                 key={sub.name} 
                                                 href={sub.href} 
-                                                className="block px-6 py-3 text-xs font-bold text-white/60 hover:text-white"
+                                                className="flex items-center gap-4 px-4 py-3 text-sm font-semibold text-white/70 hover:text-white hover:bg-white/10 transition-all rounded-xl mx-2 group/mob-sub"
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
-                                                {sub.name}
+                                                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover/mob-sub:bg-[#005D91]/40 group-hover/mob-sub:border-[#005D91]/60 transition-all shadow-sm">
+                                                    <span className="material-symbols-outlined text-[18px] text-white/80 group-hover/mob-sub:text-[#C9A95A] transition-colors">{sub.icon}</span>
+                                                </div>
+                                                <span className="flex-1 text-left tracking-wide group-hover/mob-sub:translate-x-1 transition-transform">{sub.name}</span>
+                                                <span className="material-symbols-outlined text-[16px] opacity-0 -translate-x-2 group-hover/mob-sub:opacity-100 group-hover/mob-sub:translate-x-0 transition-all text-[#C9A95A]">arrow_forward</span>
                                             </Link>
                                         ))}
                                     </div>
@@ -202,5 +217,6 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+        </>
     );
 }

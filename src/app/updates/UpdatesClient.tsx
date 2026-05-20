@@ -66,7 +66,7 @@ export default function UpdatesClient({ initialArticles }: { initialArticles: IN
 
                 {/* Filter Pills */}
                 <div className="relative z-20 w-full px-6 flex justify-center translate-y-6">
-                    <div className="flex gap-2.5 overflow-x-auto no-scrollbar py-2 px-2 bg-white/10 backdrop-blur-md rounded-full shadow-lg border border-white/20">
+                    <div className="flex gap-2.5 overflow-x-auto hide-scrollbar py-2 px-2 bg-white/10 backdrop-blur-md rounded-full shadow-lg border border-white/20">
                         {['All', 'Campus News', 'Academic', 'Heritage', 'International', 'Events'].map(filter => (
                             <button 
                                 key={filter}

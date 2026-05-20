@@ -35,7 +35,10 @@ export default function AchievementSlider() {
                     grabCursor={true}
                     centeredSlides={false}
                     slidesPerView={'auto'}
-                    spaceBetween={40}
+                    spaceBetween={20}
+                    breakpoints={{
+                        768: { spaceBetween: 40 }
+                    }}
                     loop={true}
                     speed={12000} 
                     autoplay={{
@@ -52,7 +55,7 @@ export default function AchievementSlider() {
                     {HALL_OF_FAME.map((poster) => (
                         <SwiperSlide 
                             key={poster.id} 
-                            className="w-[300px] aspect-[1/1.4]"
+                            className="w-[220px] xs:w-[260px] md:w-[300px] aspect-[1/1.4]"
                         >
                             <div className="w-full h-full bg-white rounded-md overflow-hidden border border-slate-100 shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition-all duration-700 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] group/poster cursor-pointer">
                                 <Image 
@@ -66,12 +69,12 @@ export default function AchievementSlider() {
                     ))}
                 </Swiper>
 
-                {/* Custom Navigation Arrows (Visible on Section Hover) */}
-                <button className="swiper-button-prev-custom absolute left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-slate-100 flex items-center justify-center opacity-0 group-hover/section:opacity-100 transition-all duration-300 hover:bg-white shadow-lg text-[#005D91]">
-                    <span className="material-symbols-outlined">arrow_back_ios_new</span>
+                {/* Custom Navigation Arrows (Visible on Section Hover or on Mobile) */}
+                <button className="swiper-button-prev-custom absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-md border border-slate-100 flex items-center justify-center opacity-90 md:opacity-0 group-hover/section:opacity-100 transition-all duration-300 hover:bg-white shadow-lg text-[#005D91]">
+                    <span className="material-symbols-outlined text-sm md:text-base">arrow_back_ios_new</span>
                 </button>
-                <button className="swiper-button-next-custom absolute right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-slate-100 flex items-center justify-center opacity-0 group-hover/section:opacity-100 transition-all duration-300 hover:bg-white shadow-lg text-[#005D91]">
-                    <span className="material-symbols-outlined">arrow_forward_ios</span>
+                <button className="swiper-button-next-custom absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-md border border-slate-100 flex items-center justify-center opacity-90 md:opacity-0 group-hover/section:opacity-100 transition-all duration-300 hover:bg-white shadow-lg text-[#005D91]">
+                    <span className="material-symbols-outlined text-sm md:text-base">arrow_forward_ios</span>
                 </button>
             </div>
 

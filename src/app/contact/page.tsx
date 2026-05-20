@@ -66,8 +66,14 @@ export default function ContactPage() {
             <header className="relative pt-32 pb-20 lg:pt-40 lg:pb-24 w-full flex flex-col items-center justify-center overflow-hidden bg-[#005D91]">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#004B7A] to-[#005D91]"></div>
                 <div className="relative z-20 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
+                    {/* Premium Eyebrow */}
+                    <div className="flex items-center gap-2 mb-6 group cursor-default reveal-card">
+                        <span className="flex h-2 w-2 rounded-full bg-[#B1976B] animate-pulse"></span>
+                        <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#B1976B]">Get in touch with DK</span>
+                    </div>
+
                     <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-serif-premium font-bold tracking-tight reveal-card" style={{ textWrap: 'balance' }}>
-                        Contact
+                        Contact Us
                     </h1>
                     <p className="mt-4 text-white/80 font-body text-base lg:text-lg max-w-2xl reveal-card stagger-delay" style={{ animationDelay: '0.2s' }}>
                         Have a query regarding admissions, donations, or collaborations? Reach out to us. We look forward to connecting with you.
