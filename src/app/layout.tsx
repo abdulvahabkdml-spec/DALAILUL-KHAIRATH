@@ -5,6 +5,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Dalailul Khairath Official Portal | The Sanctuary of Sacred Scholarship',
   description: 'Dalailul Khairath Official Portal',
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 import { Providers } from '@/components/Providers';
