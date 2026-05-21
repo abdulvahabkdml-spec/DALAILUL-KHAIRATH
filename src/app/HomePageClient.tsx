@@ -305,7 +305,7 @@ export default function HomePageClient({
                     ) : (
                         <img 
                             className="w-full h-full object-cover origin-center opacity-100" 
-                            src={siteSettings?.aboutImageUrl || "/h2.JPG"} 
+                            src="https://res.cloudinary.com/dhdzz9rxz/image/upload/v1779327363/01_vcnv3h.jpg" 
                             alt="Campus Background"
                         />
                     )}
