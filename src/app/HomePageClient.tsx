@@ -27,7 +27,18 @@ export default function HomePageClient({
     const [events, setEvents] = useState<IEvent[]>(initialEvents);
     const [metrics, setMetrics] = useState<IImpactMetric[]>(initialMetrics);
 
+    // Performance state for mobile optimization
+    const [isMounted, setIsMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
+        setIsMounted(true);
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile, { passive: true });
+
         // Nav Scroll Effect
         const handleScroll = () => {
             const nav = document.getElementById('main-nav');
@@ -41,7 +52,7 @@ export default function HomePageClient({
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         
-        // Intersection Observer for scroll animations
+        // Intersection Observer for scroll animations (only enabled on non-mobile for performance)
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -57,11 +68,20 @@ export default function HomePageClient({
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal-card, .icon-reveal, .stagger-delay').forEach(el => {
-            observer.observe(el);
-        });
+        const isMobileDevice = window.innerWidth < 768;
+        if (!isMobileDevice) {
+            document.querySelectorAll('.reveal-card, .icon-reveal, .stagger-delay').forEach(el => {
+                observer.observe(el);
+            });
+        } else {
+            // Immediately make visible on mobile to avoid layout reflow overhead
+            document.querySelectorAll('.reveal-card, .icon-reveal, .stagger-delay').forEach(el => {
+                el.classList.add('is-visible');
+            });
+        }
 
         return () => {
+            window.removeEventListener('resize', checkMobile);
             window.removeEventListener('scroll', handleScroll);
             observer.disconnect();
         };
@@ -214,6 +234,56 @@ export default function HomePageClient({
                     padding: 0 2px;
                     line-height: 1;
                 }
+
+                @media (max-width: 768px) {
+                    /* Disable expensive backdrop blurs on mobile */
+                    .glass-card {
+                        background: rgba(255, 255, 255, 0.96) !important;
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
+                    }
+                    .affil-card {
+                        background: rgba(255, 255, 255, 0.96) !important;
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
+                    }
+                    
+                    /* Disable heavy layout transitions and scroll animations on mobile */
+                    .reveal-card {
+                        opacity: 1 !important;
+                        transform: none !important;
+                        transition: none !important;
+                    }
+                    
+                    /* Disable hover translations on touch devices */
+                    .hover-lift:hover {
+                        transform: none !important;
+                    }
+                    .metric-card:hover {
+                        transform: none !important;
+                    }
+
+                    /* Disable continuous infinite rotation animations on mobile to save GPU cycles */
+                    .affiliation-seal .seal-ring-outer {
+                        animation: none !important;
+                    }
+                    .affiliation-seal .seal-ring-inner::before {
+                        animation: none !important;
+                    }
+                    .affil-logo-ring {
+                        animation: none !important;
+                    }
+                    .affil-logo-wrap {
+                        animation: none !important;
+                    }
+
+                    /* Force GPU hardware acceleration on marquee track for perfect scrolling performance */
+                    .affil-marquee-track {
+                        transform: translate3d(0, 0, 0) !important;
+                        backface-visibility: hidden;
+                        perspective: 1000;
+                    }
+                }
             `}</style>
 
 
@@ -223,14 +293,22 @@ export default function HomePageClient({
                     {/* The "Golden Hour" Video Filter - Dark chocolate & black at 40%+ opacity */}
                     <div className="absolute inset-0 bg-[#2A1810]/50 mix-blend-multiply z-10 pointer-events-none"></div>
                     <div className="absolute inset-0 bg-gradient-to-b from-[#3E2723]/60 via-black/30 to-black/70 z-10 pointer-events-none"></div>
-                    <video 
-                        className="w-full h-full object-cover origin-center opacity-100" 
-                        src="/Drone_flight_building_202604141451.mp4" 
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                    />
+                    {isMounted && !isMobile ? (
+                        <video 
+                            className="w-full h-full object-cover origin-center opacity-100" 
+                            src="/Drone_flight_building_202604141451.mp4" 
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
+                    ) : (
+                        <img 
+                            className="w-full h-full object-cover origin-center opacity-100" 
+                            src={siteSettings?.aboutImageUrl || "/h2.JPG"} 
+                            alt="Campus Background"
+                        />
+                    )}
                 </div>
 
                 <div className="relative z-30 text-center px-6 mt-16 flex flex-col items-center pointer-events-none">

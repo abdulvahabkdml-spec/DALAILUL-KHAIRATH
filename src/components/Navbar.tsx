@@ -78,10 +78,10 @@ export default function Navbar() {
             >
             <div className={`transition-all duration-500 rounded-[40px] px-4 md:pl-6 md:pr-8 lg:pl-12 lg:pr-16 flex items-center justify-between relative group/nav
                 ${isScrolled 
-                    ? 'h-16 md:h-20 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
+                    ? 'h-16 md:h-20 bg-[#003459] md:backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
                     : (isHomePage 
-                        ? 'h-20 md:h-32 bg-[#0F172A]/10 backdrop-blur-md border border-white/10'
-                        : 'h-20 md:h-24 lg:h-28 bg-[#003459] backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]')
+                        ? 'h-20 md:h-32 bg-[#0F172A]/90 md:bg-[#0F172A]/10 md:backdrop-blur-md border border-white/10'
+                        : 'h-20 md:h-24 lg:h-28 bg-[#003459] md:backdrop-blur-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]')
                 }`}>
                 {/* Subtle internal glow - rounded to match parent */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-0 group-hover/nav:opacity-100 transition-opacity duration-1000 rounded-[40px] pointer-events-none"></div>
@@ -162,7 +162,7 @@ export default function Navbar() {
             {/* Mobile Menu Overlay */}
             <div className={`xl:hidden absolute left-0 right-0 transition-all duration-500 top-full mt-2
                 ${isMobileMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'}`}>
-                <div className="bg-[#0F172A]/80 backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-2xl mx-2">
+                <div className="bg-[#0F172A]/95 sm:backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-2xl mx-2">
                     <div className="grid grid-cols-1 gap-2">
                         {navLinks.map((link) => (
                             <div key={link.name} className="flex flex-col">

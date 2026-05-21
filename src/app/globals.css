@@ -186,10 +186,10 @@ nav {
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 nav.scrolled {
-    background-color: rgba(26, 31, 54, 0.7) !important; /* Premium Navy Glass */
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 .nav-link {
     position: relative;
