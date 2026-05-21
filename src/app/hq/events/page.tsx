@@ -92,7 +92,7 @@ export default function EventManagementPage() {
           <div className="dk-card-title">Institutional Calendar</div>
         </div>
         <div className="dk-card-body">
-          <table className="dk-log-table">
+          <table className="dk-log-table dk-events-table">
             <thead>
               <tr>
                 <th>Date</th>

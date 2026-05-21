@@ -710,17 +710,101 @@
     gap: 16px;
     align-items: flex-start;
   }
+  .dk-page-header .dk-btn {
+    width: 100%;
+    justify-content: center;
+  }
   .dk-card-body {
     overflow-x: auto; /* Allow scrolling inside card */
+    padding: 12px !important;
   }
   .dk-log-table {
     min-width: 600px; /* Force tables to maintain premium layout and scroll instead of squish */
+  }
+
+  /* Premium Mobile Card Layout for Events Table */
+  .dk-events-table {
+    min-width: 0 !important;
+    border: none !important;
+  }
+  .dk-events-table thead {
+    display: none !important;
+  }
+  .dk-events-table tbody, 
+  .dk-events-table tr, 
+  .dk-events-table td {
+    display: block !important;
+    width: 100% !important;
+  }
+  .dk-events-table tr.dk-log-row {
+    position: relative;
+    background: rgba(8, 20, 38, 0.45) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all var(--transition);
+  }
+  .dk-events-table tr.dk-log-row:hover {
+    border-color: rgba(203, 161, 83, 0.25) !important;
+    background: rgba(12, 30, 56, 0.7) !important;
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+  }
+  .dk-events-table td {
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+  }
+  .dk-events-table td:nth-child(1) {
+    display: inline-block !important;
+    width: auto !important;
+    float: left;
+    margin-right: 12px;
+  }
+  .dk-events-table td:nth-child(2) {
+    display: block !important;
+    width: auto !important;
+    min-height: 45px;
+    padding-right: 80px !important; /* Leave room for status badge */
+  }
+  .dk-events-table td:nth-child(3) {
+    clear: both;
+    display: block !important;
+    border-top: 1px solid rgba(203, 161, 83, 0.08) !important;
+    padding-top: 12px !important;
+  }
+  .dk-events-table td:nth-child(4) {
+    position: absolute !important;
+    top: 16px;
+    right: 16px;
+    width: auto !important;
+  }
+  .dk-events-table td:nth-child(5) {
+    display: block !important;
+    border-top: 1px solid rgba(203, 161, 83, 0.08) !important;
+    padding-top: 10px !important;
+  }
+  .dk-events-table td:nth-child(5) > div {
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+  .dk-events-table td:nth-child(5) button {
+    padding: 8px 16px !important;
+    background: rgba(203, 161, 83, 0.06);
+    border: 1px solid var(--glass-border);
   }
 
   /* Modal & Form Fixes */
   .dk-modal-header, .dk-modal-body, .dk-modal-footer {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .dk-modal-body {
+    padding: 24px 20px !important;
   }
   .dk-input-group {
     margin-bottom: 16px;
